@@ -1,7 +1,30 @@
-<ul class="nav" id="nav">
-    <li><a href="/">Home</a></li>
-    <li><a href="/another-page.html">Another Page</a></li>
-    <li><a href="/that-page.html">Third Page</a></li>
-</ul><ul>
-    <li><a href="/AAHF-Test">AAHF-Test</a></li>
+{% assign sorted_pages = site.pages
+    | where_exp: "p", "p.title"
+    | sort: 'title'
+    | sort: 'order'
+%}
+<ul class="nav">
+ {% for p in sorted_pages %}
+  {% if p.path == page.path %}
+    <li><a href="{{ p.url }}"><strong>{{ p.title }}</strong></a></li>
+  {% else %}
+    <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+  {% endif %}
+ {% endfor %}
 </ul>
+
+{% assign public_repositories = site.github.public_repositories
+    | where: "has_pages", true
+    | where_exp: "r", "r.name != site.github.repository_name"
+    | sort: 'name'
+%}
+{% if public_repositories.size > 0 %}
+<h3>Projects</h3>
+<ul class="repos">
+{% for repository in public_repositories limit: 9 %}
+    <li><a href="/{{ repository.name }}">{{ repository.name }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+
+<strong>{{ site.time }}</strong>

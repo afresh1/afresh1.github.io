@@ -1,6 +1,7 @@
 ---
 author: Andrew
 title: W00!
+order: 1
 ---
 
 How exciting!  Or, mostly exciting?
