@@ -5,8 +5,6 @@ title: W00!
 
 How exciting!  Or, mostly exciting?
 
-{% include nav.html nav=page.nav %}
-
 ### Repositories
 
 {% assign public_repositories = site.github.public_repositories | where:'fork', false | sort: 'stargazers_count' | reverse %}
