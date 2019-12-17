@@ -5,8 +5,7 @@ title: W00!
 
 How exciting!  Or, mostly exciting?
 
-[Another Page](another-page)
-[Third Page](that-page)
+{% include nav.html nav=page.nav %}
 
 ### Repositories
 

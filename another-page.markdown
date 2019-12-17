@@ -4,4 +4,4 @@ title: Another Page
 ---
 This is another page. 
 
-[Home](/)
+{% include nav.html nav=page.nav %}
