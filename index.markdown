@@ -13,3 +13,9 @@ How exciting!  Or, mostly exciting?
   * [{{ repository.name }}]({{ repository.html_url }}) \\
     {{ repository.description }}
 {% endfor %}
+
+<table>
+{% tablerow repo in public_repositories cols:3 %}
+    {% include repo.html %}
+{% endtablerow %}
+</table>
